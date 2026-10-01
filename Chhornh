@@ -122,7 +122,7 @@
 <body>
 
   <div class="card" id="quizCard">
-    <img id="catImg" class="cat-sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif" alt="Cute Cat">
+    <img id="catImg" class="cat-sticker" src="https://media.giphy.com/media/C9x8gX02vf3Ak/giphy.gif" alt="Cute Cat">
     
     <div id="questionContainer">
       <h2 id="questionText">Question 1: Are you having a good day today? 🐱</h2>
@@ -150,11 +150,11 @@
     ];
 
     const catGifs = [
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHRneWthZ3Y3czRwZngwcXAzNXA3amRyeW81a3BqYTNmc2p4dyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/BzyTuYCmvSORqs1ABM/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3A1OHo2ZnhrbmNsdnV3Nml6dm1tMnM0eWpydTFwOHRwbmx2OHlsbyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXZpYjluaWJkMmx6am81aDF1NXdtYThrbWR5eTNkOWEwaDFzZGF3aiZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/jpbnoe3UIa8TU8LM13/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU2ZGZmdndtb3U3aHNvMnB1dWtpd2x2NHowcTh3NDc4bnFpOTdzZSZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/13CoXDiaCcCoyk/giphy.gif"
+      "https://media.giphy.com/media/C9x8gX02vf3Ak/giphy.gif",
+      "https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
+      "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
+      "https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif",
+      "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif"
     ];
 
     let currentQuestion = 0;
@@ -189,7 +189,7 @@
       } else {
         document.getElementById('questionContainer').style.display = 'none';
         document.getElementById('loveContainer').style.display = 'block';
-        document.getElementById('catImg').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
+        document.getElementById('catImg').src = "https://media.giphy.com/media/K1tgb1IUeBO0g/giphy.gif";
       }
     }
   </script>
