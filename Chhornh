@@ -149,7 +149,6 @@
       "Question 5: Will you be my favorite person forever? 💕"
     ];
 
-    // REPLACE THESE URL LINKS WITH ANY CAT IMAGE/GIF LINKS YOU WANT
     const catGifs = [
       "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif",
       "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHRneWthZ3Y3czRwZngwcXAzNXA3amRyeW81a3BqYTNmc2p4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/BzyTuYCmvSORqs1ABM/giphy.gif",
@@ -158,14 +157,13 @@
       "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU2ZGZmdndtb3U3aHNvMnB1dWtpd2x2NHowcTh3NDc4bnFpOTdzZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/13CoXDiaCcCoyk/giphy.gif"
     ];
 
-    const finalCatLink = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
-
     let currentQuestion = 0;
 
     function moveNoButton() {
       const noBtn = document.getElementById('noBtn');
       const card = document.getElementById('quizCard');
       
+      // Calculate random coordinates inside the card container
       const cardRect = card.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
 
@@ -183,16 +181,19 @@
       currentQuestion++;
       
       if (currentQuestion < questions.length) {
+        // Reset "No" button position
         const noBtn = document.getElementById('noBtn');
         noBtn.style.position = 'relative';
         noBtn.style.transform = 'none';
 
+        // Update question text and cat gif
         document.getElementById('questionText').innerText = questions[currentQuestion];
         document.getElementById('catImg').src = catGifs[currentQuestion];
       } else {
+        // Final screen when all 5 questions are finished
         document.getElementById('questionContainer').style.display = 'none';
         document.getElementById('loveContainer').style.display = 'block';
-        document.getElementById('catImg').src = finalCatLink;
+        document.getElementById('catImg').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
       }
     }
   </script>
