@@ -12,10 +12,10 @@
     }
 
     body {
-      background-color: #4B0082; /* Deep purple background */
+      background-color: #4B0082;
       background-image: radial-gradient(#6A0DAD 2px, transparent 2px);
       background-size: 30px 30px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -27,19 +27,20 @@
     .card {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 24px;
       padding: 40px;
       width: 90%;
-      max-width: 500px;
+      max-width: 450px;
       text-align: center;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
       position: relative;
     }
 
     .cat-sticker {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       object-fit: contain;
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
@@ -51,9 +52,9 @@
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin-bottom: 25px;
-      min-height: 60px;
+      min-height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,26 +63,26 @@
     .button-group {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
       min-height: 60px;
-      align-items: center;
       position: relative;
     }
 
     button {
-      padding: 12px 32px;
-      font-size: 1.2rem;
+      padding: 12px 30px;
+      font-size: 1.1rem;
       font-weight: bold;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .btn-yes {
       background-color: #00FF7F;
       color: #004d25;
+      transition: transform 0.2s;
     }
 
     .btn-yes:hover {
@@ -92,8 +93,7 @@
     .btn-no {
       background-color: #FF4500;
       color: #ffffff;
-      position: relative;
-      transition: all 0.2s ease;
+      transition: top 0.2s ease, left 0.2s ease;
     }
 
     .love-container {
@@ -102,13 +102,13 @@
     }
 
     .love-container h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: #FFB6C1;
       margin-bottom: 15px;
     }
 
     .love-container p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1.6;
       color: #E6E6FA;
     }
@@ -122,7 +122,7 @@
 <body>
 
   <div class="card" id="quizCard">
-    <img id="catImg" class="cat-sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif" alt="Cute Cat">
+    <img id="catImg" class="cat-sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif" alt="Cute Cat">
     
     <div id="questionContainer">
       <h2 id="questionText">Question 1: Are you having a good day today? 🐱</h2>
@@ -150,11 +150,11 @@
     ];
 
     const catGifs = [
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHRneWthZ3Y3czRwZngwcXAzNXA3amRyeW81a3BqYTNmc2p4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/BzyTuYCmvSORqs1ABM/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3A1OHo2ZnhrbmNsdnV3Nml6dm1tMnM0eWpydTFwOHRwbmx2OHlsbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXZpYjluaWJkMmx6am81aDF1NXdtYThrbWR5eTNkOWEwaDFzZGF3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jpbnoe3UIa8TU8LM13/giphy.gif",
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU2ZGZmdndtb3U3aHNvMnB1dWtpd2x2NHowcTh3NDc4bnFpOTdzZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/13CoXDiaCcCoyk/giphy.gif"
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHRneWthZ3Y3czRwZngwcXAzNXA3amRyeW81a3BqYTNmc2p4dyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/BzyTuYCmvSORqs1ABM/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3A1OHo2ZnhrbmNsdnV3Nml6dm1tMnM0eWpydTFwOHRwbmx2OHlsbyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXZpYjluaWJkMmx6am81aDF1NXdtYThrbWR5eTNkOWEwaDFzZGF3aiZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/jpbnoe3UIa8TU8LM13/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU2ZGZmdndtb3U3aHNvMnB1dWtpd2x2NHowcTh3NDc4bnFpOTdzZSZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/13CoXDiaCcCoyk/giphy.gif"
     ];
 
     let currentQuestion = 0;
@@ -162,38 +162,34 @@
     function moveNoButton() {
       const noBtn = document.getElementById('noBtn');
       const card = document.getElementById('quizCard');
-      
-      // Calculate random coordinates inside the card container
+
       const cardRect = card.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
 
-      const maxX = (cardRect.width / 2) - (btnRect.width / 2) - 20;
-      const maxY = (cardRect.height / 2) - (btnRect.height / 2) - 20;
+      const maxX = cardRect.width - btnRect.width - 40;
+      const maxY = cardRect.height - btnRect.height - 40;
 
-      const randomX = (Math.random() * (maxX * 2)) - maxX;
-      const randomY = (Math.random() * (maxY * 2)) - maxY;
+      const randomX = Math.floor(Math.random() * maxX) + 20;
+      const randomY = Math.floor(Math.random() * maxY) + 20;
 
       noBtn.style.position = 'absolute';
-      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
     }
 
     function handleYes() {
       currentQuestion++;
       
       if (currentQuestion < questions.length) {
-        // Reset "No" button position
         const noBtn = document.getElementById('noBtn');
-        noBtn.style.position = 'relative';
-        noBtn.style.transform = 'none';
+        noBtn.style.position = 'static';
 
-        // Update question text and cat gif
         document.getElementById('questionText').innerText = questions[currentQuestion];
         document.getElementById('catImg').src = catGifs[currentQuestion];
       } else {
-        // Final screen when all 5 questions are finished
         document.getElementById('questionContainer').style.display = 'none';
         document.getElementById('loveContainer').style.display = 'block';
-        document.getElementById('catImg').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
+        document.getElementById('catImg').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF_naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
       }
     }
   </script>
