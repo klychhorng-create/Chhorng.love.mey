@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Question!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #4B0082; /* Deep purple background */
+      background-image: radial-gradient(#6A0DAD 2px, transparent 2px);
+      background-size: 30px 30px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      position: relative;
+    }
+
+    .cat-sticker {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      min-height: 60px;
+      align-items: center;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-yes {
+      background-color: #00FF7F;
+      color: #004d25;
+    }
+
+    .btn-yes:hover {
+      transform: scale(1.1);
+      background-color: #32CD32;
+    }
+
+    .btn-no {
+      background-color: #FF4500;
+      color: #ffffff;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .love-container {
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    .love-container h1 {
+      font-size: 2.5rem;
+      color: #FFB6C1;
+      margin-bottom: 15px;
+    }
+
+    .love-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #E6E6FA;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="quizCard">
+    <img id="catImg" class="cat-sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif" alt="Cute Cat">
+    
+    <div id="questionContainer">
+      <h2 id="questionText">Question 1: Are you having a good day today? 🐱</h2>
+      <div class="button-group" id="btnGroup">
+        <button class="btn-yes" onclick="handleYes()">Yes</button>
+        <button class="btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
+      </div>
+    </div>
+
+    <div class="love-container" id="loveContainer">
+      <h1>I Love You! ❤️</h1>
+      <p>
+        Thank you for going through all my silly questions! You bring so much light and joy into my life every single day. I cherish every moment we share, and I just wanted to create a little special page to remind you how amazing you are and how much you mean to me!
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      "Question 1: Are you having a good day today? 🐱",
+      "Question 2: Did you know cats think you're pretty cool? 🐾",
+      "Question 3: Are you ready to see something sweet? ✨",
+      "Question 4: Can you promise to smile right now? 😊",
+      "Question 5: Will you be my favorite person forever? 💕"
+    ];
+
+    // REPLACE THESE URL LINKS WITH ANY CAT IMAGE/GIF LINKS YOU WANT
+    const catGifs = [
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnIzdnVqMmticmdnY3AzaDRxd3B5dGpmMnJ6OWs1ZnhvdnlvZ295ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eHRneWthZ3Y3czRwZngwcXAzNXA3amRyeW81a3BqYTNmc2p4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/BzyTuYCmvSORqs1ABM/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3A1OHo2ZnhrbmNsdnV3Nml6dm1tMnM0eWpydTFwOHRwbmx2OHlsbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXZpYjluaWJkMmx6am81aDF1NXdtYThrbWR5eTNkOWEwaDFzZGF3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jpbnoe3UIa8TU8LM13/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU2ZGZmdndtb3U3aHNvMnB1dWtpd2x2NHowcTh3NDc4bnFpOTdzZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/13CoXDiaCcCoyk/giphy.gif"
+    ];
+
+    const finalCatLink = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqNGtyb3g3OHJocHJ0YmVsMGtwYmhncTBqbjZkOGw1bjZ4OHU2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/K1tgb1IUeBO0g/giphy.gif";
+
+    let currentQuestion = 0;
+
+    function moveNoButton() {
+      const noBtn = document.getElementById('noBtn');
+      const card = document.getElementById('quizCard');
+      
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = (cardRect.width / 2) - (btnRect.width / 2) - 20;
+      const maxY = (cardRect.height / 2) - (btnRect.height / 2) - 20;
+
+      const randomX = (Math.random() * (maxX * 2)) - maxX;
+      const randomY = (Math.random() * (maxY * 2)) - maxY;
+
+      noBtn.style.position = 'absolute';
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function handleYes() {
+      currentQuestion++;
+      
+      if (currentQuestion < questions.length) {
+        const noBtn = document.getElementById('noBtn');
+        noBtn.style.position = 'relative';
+        noBtn.style.transform = 'none';
+
+        document.getElementById('questionText').innerText = questions[currentQuestion];
+        document.getElementById('catImg').src = catGifs[currentQuestion];
+      } else {
+        document.getElementById('questionContainer').style.display = 'none';
+        document.getElementById('loveContainer').style.display = 'block';
+        document.getElementById('catImg').src = finalCatLink;
+      }
+    }
+  </script>
+</body>
+</html>
